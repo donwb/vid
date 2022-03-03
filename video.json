@@ -1,0 +1,61 @@
+{
+  "browserName": "Chrome",
+  "browserVersion": "98.0.4758",
+  "clientTime": {
+    "clientEventTimestamp": "{{date.now("YYYY-MM-DDTHH:mm:ss.SSS")}}"
+  },
+  "device": "Mac",
+  "deviceBrandName": "Apple",
+  "eventName": "heartbeat",
+  "eventType": "video-qos",
+  "ids": {
+    "cdpid": "59e730d5-0558-4b57-b387-95175e473ecd",
+    "kruxid": "null",
+    "wmukid": "fcaa9a9f-9987-4300-b3b2-854e9dd5d606"
+  },
+  "ipAddress": "157.166.255.254",
+  "model": "Mac",
+  "mvpd": {
+    "authRequired": "Not Logged in",
+    "authState": "preview",
+    "displayName": "null",
+    "mvpdId": "null"
+  },
+  "operatingSystem": "Mac OS X",
+  "osVersion": "10.15.7",
+  "player": {
+    "playerName": "TOP"
+  },
+  "productProperties": {
+    "appName": "Watch NCAA",
+    "appVersion": "1.0.0",
+    "brand": "NCAA",
+    "platform": "Web",
+    "subBrand": "ncaa.com/march-madness-live"
+  },
+  "session": {
+    "sessionId": "1ed59fcf-07ba-4bc7-a90c-e3ab4eb7731f"
+  },
+  "video": {
+    "assetId": "223 - Iowa vs Cincinnati",
+    "assetType": "live",
+    "currentMediaState": "pending",
+    "currentVideoPosition": "0",
+    "streamType": "live",
+    "videoTitleId": 223
+  },
+  "videoSession": {
+    "sessionId": "ec67ad56-6007-4ee5-afc5-77103bf819242022-02-28T21:26:51.600Z"
+  },
+  "location": {
+    "city": "NEW YORK",
+    "country": "US",
+    "state": "NY",
+    "timeZone": "America/New_York"
+  },
+  "cdn": "akamai",
+  "library": {
+    "name": "Prism JS",
+    "version": "2.11.0"
+  }
+}
