@@ -43,6 +43,13 @@ func prettyPrinter(vids VideoCallStruct) {
 
 }
 
+func prettyLogger(vid VideoCallStruct) {
+	startSection("logging")
+	fmt.Println(vid.Ids.Wmukid)
+	fmt.Println(vid.EventName)
+
+}
+
 func dumpObject(vids VideoCallStruct) {
 	fmt.Printf("%+v", vids)
 }

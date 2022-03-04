@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sync"
 	"time"
 
 	"github.com/bxcodec/faker/v3"
@@ -12,6 +13,37 @@ func main() {
 
 	CustomGenerator()
 
+	vids1 := createNewVideoSession()
+	vids2 := createNewVideoSession()
+	vids3 := createNewVideoSession()
+
+	//prettyPrinter(finalVids)
+
+	var wg sync.WaitGroup
+
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		publish(vids1)
+	}()
+
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		publish(vids2)
+	}()
+
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		publish(vids3)
+	}()
+	wg.Wait()
+
+	fmt.Println("Done!!")
+}
+
+func createNewVideoSession() VideoCallStruct {
 	ids := Ids{}
 
 	err := faker.FakeData(&ids)
@@ -31,12 +63,7 @@ func main() {
 	manualVids := doManualFields(v)
 	sessionVids := createSession(manualVids)
 	finalVids := setVideoDetails(sessionVids)
-
-	fmt.Println(finalVids.ProductProperties.Platform)
-
-	prettyPrinter(finalVids)
-
-	fmt.Println("Done!!")
+	return finalVids
 }
 
 func doManualFields(vids VideoCallStruct) VideoCallStruct {
