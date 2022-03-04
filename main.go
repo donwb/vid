@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	fmt.Println("here!")
+	fmt.Println("Starting.....")
 
 	CustomGenerator()
 
@@ -34,8 +34,9 @@ func main() {
 
 	fmt.Println(finalVids.ProductProperties.Platform)
 
-	fmt.Printf("%+v", finalVids)
+	prettyPrinter(finalVids)
 
+	fmt.Println("Done!!")
 }
 
 func doManualFields(vids VideoCallStruct) VideoCallStruct {
