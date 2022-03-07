@@ -13,31 +13,26 @@ func main() {
 
 	CustomGenerator()
 
-	vids1 := createNewVideoSession()
-	vids2 := createNewVideoSession()
-	vids3 := createNewVideoSession()
-
-	//prettyPrinter(finalVids)
-
 	var wg sync.WaitGroup
 
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		publish(vids1)
-	}()
+	vids := make([]VideoCallStruct, 10)
+	vidLegth := len(vids)
+	fmt.Println("length: ", len(vids))
 
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		publish(vids2)
-	}()
+	for i := 0; i < vidLegth; i++ {
+		fmt.Println("creating vid.....")
+		vids[i] = createNewVideoSession()
+	}
 
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		publish(vids3)
-	}()
+	for vid := range vids {
+		wg.Add(1)
+		go func(currentVid *VideoCallStruct) {
+			defer wg.Done()
+			fmt.Println("Publishing")
+			publish(*currentVid)
+		}(&vids[vid])
+
+	}
 	wg.Wait()
 
 	fmt.Println("Done!!")
