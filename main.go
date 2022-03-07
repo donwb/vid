@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"sync"
 	"time"
@@ -9,20 +10,27 @@ import (
 )
 
 func main() {
+	uniques := flag.Int("uniques", 10, "The number of unique users to create")
+	flag.Parse()
+
+	fmt.Println("Processing ", *uniques)
+
 	fmt.Println("Starting.....")
 
 	CustomGenerator()
 
 	var wg sync.WaitGroup
 
-	vids := make([]VideoCallStruct, 10)
+	vids := make([]VideoCallStruct, *uniques)
 	vidLegth := len(vids)
 	fmt.Println("length: ", len(vids))
 
+	fmt.Print("Creating vid objects.")
 	for i := 0; i < vidLegth; i++ {
-		fmt.Println("creating vid.....")
+		fmt.Print(".")
 		vids[i] = createNewVideoSession()
 	}
+	fmt.Println()
 
 	for vid := range vids {
 		wg.Add(1)
